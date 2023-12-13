@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказ</title>
+   <!--<link rel="stylesheet" type="text/css" href="styles.css">--> 
+   <style>
+    .columns-container {
+        display: flex;
+    }
+
+    .column {
+        flex: 1;
+        margin: 10px;
+    }
+
+    /* Добавим стили для контейнера, чтобы колонки были в одну строку */
+    body {
+        display: flex;
+        flex-direction: column; /* Меняем направление флекс-контейнера на колонку */
+        align-items: center; /* Выравниваем по центру, чтобы колонки были по центру страницы */
+    }
+</style>
+</head>
+<body>
+   
+    <div class="columns-container">
+        
+      <!-- Первый столбец с HTML-кодом -->
+      <div class="column">
+        <h2>информация о заказе:</h2>
+        <p>Order_uid: {{.Order.Order_uid}}</p>  
+        <p>Track_number:{{.Order.Track_number}}</p>  
+        <p>Entry:{{.Order.Entry}}</p>  
+        <p> Locale:{{.Order.Locale}}</p>
+        <p>Internal_signature:{{.Order.Internal_signature}}</p>  
+        <p> Customer_id:{{.Order.Customer_id}}</p> 
+        <p>Delivery_servise:{{.Order.Delivery_servise}}</p>  
+        <p>Shardkey:{{.Order.Shardkey}}</p>  
+        <p>Sm_id:{{.Order.Sm_id}}</p>  
+        <p>Date_created:{{.Order.Date_created}}</p>  
+        <p>Oof_shard:{{.Order.Oof_shard}}</p>   
+    
+
+      </div>
+  
+      <!-- Второй столбец с HTML-кодом -->
+      <div class="column">
+        <h2>Информация о доставке:</h2>
+        <p>Name:{{.Delivery.Name}} </p>
+        <p>Phone:{{.Delivery.Phone}} </p>
+        <p>Zip:{{.Delivery.Zip}} </p>
+        <p>City:{{.Delivery.City}} </p>
+        <p>Address:{{.Delivery.Address}} </p>
+        <p>Region:{{.Delivery.Region}} </p>
+        <p>Email:{{.Delivery.Email}} </p>
+        <p>Order_uid:{{.Delivery.Order_uid}}</p>
+      </div>
+
+      <div class="column">
+        <h2>Информация об оплате:</h2>
+        <p>Transaction:{{.Payment.Transaction}} </p>
+        <p>Request_id:{{.Payment.Request_id}} </p>
+        <p>Currency:{{.Payment.Currency}} </p>
+        <p>Provider:{{.Payment.Provider}} </p>
+        <p>Amount:{{.Payment.Amount}} </p>
+        <p>Payment_dt:{{.Payment.Payment_dt}}</p>
+        <p>Bank:{{.Payment.Bank}}</p>
+        <p>Delivery_cost{{.Payment.Delivery_cost}}</p>
+        <p>Goods_total:{{.Payment.Goods_total}}</p>
+        <p>Custom_fee:{{.Payment.Custom_fee}}</p>
+      </div>
+      
+      
+      <div class="column">
+        
+        <h2>Информация о товарах:</h2>
+        <ul>
+           {{range .Page_data_Items.Items}} 
+           <li>
+            <p>Chrt_id:{{.Chrt_id}} </p>
+            <p>Track_number:{{.Track_number}} </p>
+            <p>Price:{{.Price}} </p>
+            <p>Rid:{{.Rid}} </p>
+            <p>Name:{{.Name}} </p>
+            <p>Sale:{{.Sale}}</p>
+            <p>Size: {{.Size}} </p>
+            <p>Total_prize: {{.Total_prize}} </p>
+            <p>Nm_id: {{.Nm_id}} </p>
+            <p>Brand: {{.Brand}} </p>
+            <p>Status: {{.Status}} </p>
+            <p>Order_uid: {{.Order_uid}} </p>
+           </li>
+           {{end}}
+        </ul>
+      </div>
+      
+    </div>
+
+  </body>
+</html>
